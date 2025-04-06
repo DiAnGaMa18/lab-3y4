@@ -1,13 +1,14 @@
-import WelcomeWidget from "./WelcomeWidget";
+import { useContext } from 'react';
+import { AuthContext } from '../Context/AuthContext';
+import Welcome from './Welcome';
 
-export default function Home({email}) {
+export default function Home() {
+  const { user } = useContext(AuthContext);
 
-    return (
-        <>
-            <h1>Your at Home!</h1>
-            <WelcomeWidget email={email} />
-        </>
-
-
-    );
+  return (
+    <div>
+      <h2>Bienvenido, {user?.email}!</h2> {}
+      <Welcome userName={user?.email} />
+    </div>
+  );
 }
